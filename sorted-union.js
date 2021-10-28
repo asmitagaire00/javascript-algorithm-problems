@@ -9,8 +9,20 @@
 // &[^\s]*
 
 function uniteUnique(arr) {
+  arr = [...arguments];
+  let flattened = arr.reduce((previousValue, currentValue) => {
+    return previousValue.concat(currentValue);
+  }, []);
+  console.log(flattened);
 
-  return arr;
+  let newArr = flattened.reduce((previousValue, currentValue) => {
+    if (previousValue.indexOf(currentValue) === -1) {
+      previousValue.push(currentValue);
+    }
+    return previousValue;
+  }, []);
+  return newArr;
 }
 
-uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+let result = uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+console.log(result);
